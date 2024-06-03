@@ -8,14 +8,15 @@ export default function Home() {
   const [meaning, setMeaning] = useState("");
   const [example, setExample] = useState("");
   const addWord = () => {
-    wordList.push({ word: word, meaning: meaning, example: example });
+    const id = wordList.length + 1;
+    wordList.push({ id: id, check: 0, word: word, meaning: meaning, example: example });
     setWord("");
     setMeaning("");
     setExample("");
   }
   return (
 
-    <div>
+    <>
       <h1>My Words</h1>
       <input type="text" value={word} onChange={(e) => setWord(e.target.value)} placeholder="Word" />
       <input type="text" value={meaning} onChange={(e) => setMeaning(e.target.value)} placeholder="Meaning" />
@@ -23,6 +24,6 @@ export default function Home() {
       <button onClick={addWord}>add word</button>
       <button>random</button>
       <Words data={wordList} />
-    </div>
+    </>
   );
 }
